@@ -1,14 +1,16 @@
 
 
-export function getWeatherData(appState, cityName, unit) {
-    return _doGetWeatherData(appState, cityName, unit)
+export function getWeatherData(appState) {
+    return _doGetWeatherData(appState)
 }
 
 
-async function _doGetWeatherData(appState, cityName, unit) {
+async function _doGetWeatherData(appState) {
     // set loading to true
+
     let appid = '&appid=15b205abad1b5e1fb9ef943d6eccf32c'
-    let unitQuery = `&units=${unit}`
+    let unitQuery = `&units=${appState.unit}`
+    let cityName = appState.currentCity
     if (cityName) {
         let weatherQueryString = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}${appid}${unitQuery}`
         let fiveDayQueryString = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}${appid}${unitQuery}`
@@ -19,7 +21,7 @@ async function _doGetWeatherData(appState, cityName, unit) {
         let uvIndex = await $.ajax({url: uvQueryString, method: 'GET'})
 
         let forcast = await $.ajax({url: fiveDayQueryString, method: 'GET'})
-        
+
         return setTodaysData(appState, {...weather, uvIndex: uvIndex.value, forcast: filterDaysData(forcast)})
         // set loading to false
     }
@@ -30,8 +32,8 @@ function setTodaysData(appState, todaysData) {
     newState.lat = todaysData.coord.lat
     newState.lon = todaysData.coord.lon
     newState.todaysWeather.name = todaysData.name
-    newState.todaysWeather.temp = todaysData.main.temp
-    newState.todaysWeather.feelsLike = todaysData.main.feels_like
+    newState.todaysWeather.temp = parseInt(todaysData.main.temp).toFixed(0)
+    newState.todaysWeather.feelsLike = parseInt(todaysData.main.feels_like).toFixed(0)
     newState.todaysWeather.pressure = todaysData.main.pressure
     newState.todaysWeather.humidity = todaysData.main.humidity,
     newState.todaysWeather.clouds = todaysData.clouds.all
@@ -55,7 +57,7 @@ function filterDaysData(forcast) {
         if (!(dayString in forcastObj)) {
             forcastObj[dayString] = {
                 day: dayString,
-                temp: day.main.temp,
+                temp: parseInt(day.main.temp).toFixed(0),
                 diff: day.main.temp - day.main.temp_max,
                 icon: day.weather[0].icon
             }
