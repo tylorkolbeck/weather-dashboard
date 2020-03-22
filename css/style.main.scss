@@ -243,7 +243,7 @@ hr {
     margin: 40px auto;
 }
 
-.card {
+.weather-card {
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -254,14 +254,21 @@ hr {
     flex: 1 1 0px;
     margin: 0 20px;
     box-shadow: 2px 2px 5px rgba(0,0,0, .5);
+    max-width: 250px;
     
-    & img {
-        margin: 10px auto;
-        height: 50px;
+    & i {
+        margin: 20px auto;
+        font-size: 48px;
     }
 
     & p {
         text-align: center;
+    }
+
+    & h4 span {
+        color: $color-header-inactive;
+        font-size: 14px;
+        margin-left: 6px;
     }
 }
 
@@ -269,17 +276,15 @@ hr {
     margin: 20px auto;
 }
 
-.temp-dif {
-    color: $color-header-inactive;
-    font-size: 14px;
-    margin-left: 6px;
-}
-
 
 // MORE WEATHER INFO SECTION
+
+
+
 .more-info-cards {
     padding: 20px 0px;
     display: flex;
+    justify-content: center;
 
     & .wind-direction-icon {
         margin: 0px;
@@ -287,6 +292,20 @@ hr {
         width: 20px;
         transform: rotate(-45deg);
     }
+}
+
+.card {
+    display: flex;
+    max-width: 250px;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+    border-radius: $container-border-radius;
+    display: block;
+    background: white;
+    flex: 1 1 0px;
+    margin: 0 20px;
+    box-shadow: 2px 2px 5px rgba(0,0,0, .5);
 }
 
 .card-content-wind {

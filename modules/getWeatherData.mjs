@@ -8,12 +8,13 @@ export function getWeatherData(appState, cityName) {
 async function _doGetWeatherData(appState, cityName) {
     // set loading to true
     let appid = '&appid=15b205abad1b5e1fb9ef943d6eccf32c'
+    let unit = '&units=imperial'
     if (cityName) {
-        let weatherQueryString = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}${appid}`
-        let fiveDayQueryString = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}${appid}`
+        let weatherQueryString = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}${appid}${unit}`
+        let fiveDayQueryString = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}${appid}${unit}`
 
         let weather = await $.ajax({url: weatherQueryString, method: 'GET'})
-        let uvQueryString = `https://api.openweathermap.org/data/2.5/uvi?lat=${weather.coord.lat}&lon=${weather.coord.lon}${appid}`
+        let uvQueryString = `https://api.openweathermap.org/data/2.5/uvi?lat=${weather.coord.lat}&lon=${weather.coord.lon}${appid}${unit}`
 
         let uvIndex = await $.ajax({url: uvQueryString, method: 'GET'})
 
@@ -49,7 +50,7 @@ function setTodaysData(appState, todaysData) {
 function filterDaysData(forcast) {
     let forcastObj = {}
     forcast.list.forEach(day => {
-        let dayString = moment(day.dt * 1000).format('dddd')
+        let dayString = moment(day.dt * 1000).format('ddd')
 
         if (!(dayString in forcastObj)) {
             forcastObj[dayString] = {

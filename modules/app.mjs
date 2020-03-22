@@ -1,4 +1,7 @@
 import { getWeatherData } from './getWeatherData.mjs'
+import onChange from './on-change.mjs'
+
+import weatherCard from './weather-card.mjs'
 
 let appState = {
     error: null,
@@ -23,15 +26,37 @@ let appState = {
     }
 }
 
+
 function setAppState(dataObj) {
     appState = {
         ...dataObj
     }
-    console.log(appState)
+
+    buildUi(dataObj)
 }
 
-
+// This function will be triggered by input submit
 getWeatherData(appState, 'San Diego')
     .then(res => {
         setAppState(res)
     })
+
+
+
+function buildUi(appState) {
+    let fiveDayForcast = buildFiveDayForcast(appState.forcast)
+    console.log(fiveDayForcast)
+
+    $('.five-day-wrapper').append(fiveDayForcast)
+    
+}
+
+function buildFiveDayForcast(forcast) {
+    let days = []
+    for (let key in forcast) {
+        days.push(weatherCard(forcast[key]))
+    }
+
+    return days
+}
+

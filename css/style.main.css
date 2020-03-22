@@ -247,7 +247,7 @@ hr {
   margin: 40px auto;
 }
 
-.card {
+.weather-card {
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -258,34 +258,49 @@ hr {
   flex: 1 1 0px;
   margin: 0 20px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  max-width: 250px;
 }
-.card img {
-  margin: 10px auto;
-  height: 50px;
+.weather-card i {
+  margin: 20px auto;
+  font-size: 48px;
 }
-.card p {
+.weather-card p {
   text-align: center;
+}
+.weather-card h4 span {
+  color: #a3a3a3;
+  font-size: 14px;
+  margin-left: 6px;
 }
 
 .card-content {
   margin: 20px auto;
 }
 
-.temp-dif {
-  color: #a3a3a3;
-  font-size: 14px;
-  margin-left: 6px;
-}
-
 .more-info-cards {
   padding: 20px 0px;
   display: flex;
+  justify-content: center;
 }
 .more-info-cards .wind-direction-icon {
   margin: 0px;
   height: 20px;
   width: 20px;
   transform: rotate(-45deg);
+}
+
+.card {
+  display: flex;
+  max-width: 250px;
+  flex-direction: column;
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+  display: block;
+  background: white;
+  flex: 1 1 0px;
+  margin: 0 20px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 .card-content-wind {
