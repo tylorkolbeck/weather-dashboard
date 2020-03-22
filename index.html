@@ -1,20 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- GOOLE FONT -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,100&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.main.css">
     <title>Weather Dashboard</title>
 </head>
+
 <body>
     <div id="container">
         <div id="side-bar">
-            <div class="search-wrapper">
+            <div class="weather-today-lg">
+                <img src="assets/images/sunny.png">
+            </div>
+
+            <div class="date-wrapper">
+                <h2>Monday,</h2>
+                <h3>1630</h3>
+            </div>
+
+            <h1 class="weather-deg-lg">70°F</h1>
+
+            
+
+            <div class="spacer-lg"></div>
+            <hr>
+
+            <div class="search-wrapper m-y-lg">
                 <img class="icon-search" src="./assets/images/search.png">
                 <input placeholder="City...">
                 <img class="icon-location" src="./assets/images/location.png">
+            </div>
+
+            <div class="recent-search-wrapper">
+                <div class="recent">
+                    <h2>San Diego, CA</h2>
+                    <p>70°F</p>
+                </div>
+
+                <div class="recent">
+                    <h2>Jacksonville, FL</h2>
+                    <p>70°F</p>
+                </div>
+
+                <div class="recent">
+                    <h2>Seattle, WA</h2>
+                    <p>70°F</p>
+                </div>
+
             </div>
 
         </div>
@@ -23,12 +59,12 @@
                 <!-- HEADER CONTROLS -->
                 <div class="controls">
                     <div class="controls-nav">
-                        <h2 class="tab active m-r-md">Today</h2>
-                        <h2 class="tab">Week</h2>
+                        <h2 class="tab m-r-md">Today</h2>
+                        <h2 class="tab active">Week</h2>
                     </div>
                     <div class="controls-setting">
-                        <div class="setting active m-r-md">F</div>
-                        <div class="setting">C</div>
+                        <div class="setting active m-r-md">°F</div>
+                        <div class="setting">°C</div>
                     </div>
                 </div>
 
@@ -68,19 +104,26 @@
                         <div class="card">
                             <p>Humidity</p>
                             <div class="card-content">
-                                <h2>90</h2>
+                                <h2>10%</h2>
                             </div>
                         </div>
                         <div class="card">
                             <p>Wind</p>
                             <div class="card-content">
                                 <h2>13 MPH</h2>
+                                <div class="card-content-wind">
+                                    <img class="wind-direction-icon" src="assets/images/arrow.png">
+                                    <span class="inactive">123</span>
+                                </div>
+
                             </div>
                         </div>
                         <div class="card">
                             <p>UV Index</p>
                             <div class="card-content">
                                 <h2>10.16</h2>
+                                <div class="uv-scale m-t-md"></div>
+
                             </div>
                         </div>
                     </div>
@@ -98,6 +141,13 @@
                                 <h2>1024 hPa</h2>
                             </div>
                         </div>
+
+                        <div class="card">
+                            <p>Clouds</p>
+                            <div class="card-content">
+                                <h2>2%</h2>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
@@ -107,4 +157,5 @@
     </div>
     <script src="./modules/app.mjs"></script>
 </body>
+
 </html>

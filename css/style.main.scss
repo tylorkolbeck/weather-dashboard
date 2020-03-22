@@ -25,6 +25,14 @@ input {
     border-radius: 10px;
 }
 
+hr {
+    outline: none;
+    border: 0;
+    border-top: 1px solid $color-header-primary;
+    border-radius: 2px;
+    
+}
+
 #container {
     display: flex;
     position: relative;
@@ -56,9 +64,87 @@ input {
     display: flex;
     flex-direction: column;
     z-index: 1;
-    background: $color-section-background;
+    background: rgba($color-section-background, .4);
     border-radius: $container-border-radius;
+    box-shadow: 2px 2px 5px rgba(0,0,0, .5);
 
+    & .weather-today-lg {
+        display: flex;
+        justify-content: center;
+        & img {
+            text-align: center;
+            margin: 20px auto;
+            width: 200px;
+        }
+    } 
+
+    & .weather-deg-lg {
+        margin: 20px auto;
+        font-size: 68px;
+        font-weight: 100;
+    }
+
+    & .date-wrapper {
+        align-items: flex-end;
+        justify-content: center;
+        display: flex;
+
+        & h3 {
+            margin-left: 10px;
+        }
+    }
+
+    & .recent-search-wrapper {
+        display: flex;
+        flex-direction: column;
+        overflow-y: scroll;
+        background: none;
+
+        & .recent {
+            position: relative;
+            border-radius: $container-border-radius;
+            padding: 20px;
+            margin: 10px 0;
+            background-size: cover;
+            background-position: bottom;
+            color: white;
+            box-shadow: 2px 2px 5px rgba(0,0,0, .5);
+
+            &:hover {
+                cursor: pointer;
+                &::before {
+                    background: rgba(0,0,0, 0)
+                }
+            }
+
+            & h2 {
+                color: white;
+            }
+        }
+
+        & .recent::before {
+            position: absolute;
+            content: "";
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: rgba(0,0,0, .2);
+            border-radius: 10px;
+        }
+
+        & .recent:nth-child(1) {
+            background-image: url('../assets/images/scape-1.jpg');
+        }
+
+        & .recent:nth-child(2) {
+            background-image: url('../assets/images/scape-2.jpg');
+        }
+
+        & .recent:nth-child(3) {
+            background-image: url('../assets/images/scape-3.jpg');
+        }
+    }
 
 }
 
@@ -84,8 +170,9 @@ input {
     z-index: 1;
     flex-grow: 1;
     border-radius: $container-border-radius;
-    background: $color-section-background;
+    background: rgba($color-section-background, .4);
     margin-left: 40px;
+    box-shadow: 2px 2px 5px rgba(0,0,0, .5);
 }
 
 // HEADER SECTION CONTAINING CONTROLS
@@ -152,6 +239,7 @@ input {
 // FIVE DAY FORCAST SECTION
 .five-day-wrapper {
     display: flex;
+    // flex-wrap: wrap;
     margin: 40px auto;
 }
 
@@ -159,13 +247,14 @@ input {
     display: flex;
     flex-direction: column;
     text-align: center;
-    padding: 10px;
+    padding: 20px;
     border-radius: $container-border-radius;
     display: block;
-    background: #eee;
+    background: white;
     flex: 1 1 0px;
     margin: 0 20px;
-
+    box-shadow: 2px 2px 5px rgba(0,0,0, .5);
+    
     & img {
         margin: 10px auto;
         height: 50px;
@@ -177,7 +266,7 @@ input {
 }
 
 .card-content {
-    margin: 40px auto;
+    margin: 20px auto;
 }
 
 .temp-dif {
@@ -192,4 +281,27 @@ input {
     padding: 20px 0px;
     display: flex;
 
+    & .wind-direction-icon {
+        margin: 0px;
+        height: 20px;
+        width: 20px;
+        transform: rotate(-45deg);
+    }
 }
+
+.card-content-wind {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.uv-scale {
+    height: 20px;
+    width: 100%;
+    margin-right: 20px;
+    background: #eb4034;
+    border-radius: 20px;
+    display: inline-block;
+}
+
+

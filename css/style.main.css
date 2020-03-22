@@ -3,11 +3,37 @@ body {
 }
 
 h1, h2, h3, h4 p {
-  font-weight: 300;
+  font-weight: 400;
+  color: #1d1d1d;
 }
 
 .m-r-md {
   margin-right: 20px;
+}
+
+.m-t-md {
+  margin-top: 20px;
+}
+
+.m-y-lg {
+  margin: 40px 0;
+}
+
+.m-y-md {
+  margin: 20px 0px;
+}
+
+.spacer-lg {
+  margin: 20px 0;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.flex-a-c {
+  align-items: center;
+  justify-content: center;
 }
 
 * {
@@ -29,6 +55,13 @@ input {
   border: none;
   font-size: 16px;
   border-radius: 10px;
+}
+
+hr {
+  outline: none;
+  border: 0;
+  border-top: 1px solid #1d1d1d;
+  border-radius: 2px;
 }
 
 #container {
@@ -61,8 +94,75 @@ input {
   display: flex;
   flex-direction: column;
   z-index: 1;
-  background: #cbcbcb;
-  border-radius: 20px;
+  background: rgba(225, 225, 225, 0.4);
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+#side-bar .weather-today-lg {
+  display: flex;
+  justify-content: center;
+}
+#side-bar .weather-today-lg img {
+  text-align: center;
+  margin: 20px auto;
+  width: 200px;
+}
+#side-bar .weather-deg-lg {
+  margin: 20px auto;
+  font-size: 68px;
+  font-weight: 100;
+}
+#side-bar .date-wrapper {
+  align-items: flex-end;
+  justify-content: center;
+  display: flex;
+}
+#side-bar .date-wrapper h3 {
+  margin-left: 10px;
+}
+#side-bar .recent-search-wrapper {
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  background: none;
+}
+#side-bar .recent-search-wrapper .recent {
+  position: relative;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 10px 0;
+  background-size: cover;
+  background-position: bottom;
+  color: white;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+#side-bar .recent-search-wrapper .recent:hover {
+  cursor: pointer;
+}
+#side-bar .recent-search-wrapper .recent:hover::before {
+  background: rgba(0, 0, 0, 0);
+}
+#side-bar .recent-search-wrapper .recent h2 {
+  color: white;
+}
+#side-bar .recent-search-wrapper .recent::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+#side-bar .recent-search-wrapper .recent:nth-child(1) {
+  background-image: url("../assets/images/scape-1.jpg");
+}
+#side-bar .recent-search-wrapper .recent:nth-child(2) {
+  background-image: url("../assets/images/scape-2.jpg");
+}
+#side-bar .recent-search-wrapper .recent:nth-child(3) {
+  background-image: url("../assets/images/scape-3.jpg");
 }
 
 .search-wrapper {
@@ -85,13 +185,14 @@ input {
   flex-direction: column;
   z-index: 1;
   flex-grow: 1;
-  border-radius: 20px;
-  background: #cbcbcb;
+  border-radius: 10px;
+  background: rgba(225, 225, 225, 0.4);
   margin-left: 40px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 #weather-header {
-  border-radius: 20px 20px 0 0;
+  border-radius: 10px 10px 0 0;
   padding: 40px 40px;
 }
 
@@ -112,15 +213,15 @@ input {
 }
 .controls-nav .tab:hover {
   cursor: pointer;
-  color: #2b2b2b;
+  color: #1d1d1d;
 }
 .controls-nav.tab:hover {
   cursor: pointer;
 }
 
 .tab.active {
-  color: #2b2b2b;
-  border-bottom: 2px solid #2b2b2b;
+  color: #1d1d1d;
+  border-bottom: 2px solid #1d1d1d;
 }
 
 .setting {
@@ -150,12 +251,13 @@ input {
   display: flex;
   flex-direction: column;
   text-align: center;
-  padding: 10px;
-  border-radius: 20px;
+  padding: 20px;
+  border-radius: 10px;
   display: block;
-  background: #eee;
+  background: white;
   flex: 1 1 0px;
   margin: 0 20px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 .card img {
   margin: 10px auto;
@@ -166,7 +268,7 @@ input {
 }
 
 .card-content {
-  margin: 40px auto;
+  margin: 20px auto;
 }
 
 .temp-dif {
@@ -178,6 +280,27 @@ input {
 .more-info-cards {
   padding: 20px 0px;
   display: flex;
+}
+.more-info-cards .wind-direction-icon {
+  margin: 0px;
+  height: 20px;
+  width: 20px;
+  transform: rotate(-45deg);
+}
+
+.card-content-wind {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.uv-scale {
+  height: 20px;
+  width: 100%;
+  margin-right: 20px;
+  background: #eb4034;
+  border-radius: 20px;
+  display: inline-block;
 }
 
 /*# sourceMappingURL=style.main.css.map */
