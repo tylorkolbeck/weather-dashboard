@@ -244,6 +244,7 @@ hr {
 
 .five-day-wrapper {
   display: flex;
+  flex-wrap: wrap;
   margin: 40px auto;
 }
 
@@ -255,10 +256,11 @@ hr {
   border-radius: 10px;
   display: block;
   background: white;
-  flex: 1 1 0px;
+  flex: 0 1 0px;
   margin: 0 20px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
   max-width: 250px;
+  margin-bottom: 20px;
 }
 .weather-card i {
   margin: 20px auto;

@@ -45,9 +45,9 @@ getWeatherData(appState, 'San Diego')
 
 function buildUi(appState) {
     let fiveDayForcast = buildFiveDayForcast(appState.forcast)
-    console.log(fiveDayForcast)
-
     $('.five-day-wrapper').append(fiveDayForcast)
+
+    buildTodaysHighlights(appState.todaysWeather)
     
 }
 
@@ -58,5 +58,22 @@ function buildFiveDayForcast(forcast) {
     }
 
     return days
+}
+
+function buildTodaysHighlights(weatherData) {
+    $('#humidity h2').text(`${weatherData.humidity}%`)
+    // WIND
+    $('#wind h2').text(`${weatherData.wind_speed} mph`)
+    $('#wind span').text(`${weatherData.wind_direction}°`)
+    // UV 
+    $('#uv-index h2').text(`${weatherData.uvIndex}`)
+    // FEELS LIKE
+    $('#feels-like h2').text(`${weatherData.feelsLike}°`)
+    // $('#feels-like .card-content span').text('3')
+    // PRESSURE
+    $('#pressure h2').text(`${weatherData.pressure} hPa`)
+    $('#pressure h2').text(`${weatherData.pressure} hPa`)
+    // CLOUDS
+    $('#clouds h2').text(`${weatherData.clouds}%`)
 }
 
