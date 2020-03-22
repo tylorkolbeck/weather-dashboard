@@ -65,7 +65,7 @@ function buildUi(appState) {
     let fiveDayForcast = buildFiveDayForcast(appState.forcast)
     $('.five-day-wrapper').append(fiveDayForcast)
 
-    buildTodaysHighlights(appState.todaysWeather)
+    buildTodaysHighlights(appState)
     buildSideWeatherUi(appState)
     
 }
@@ -79,10 +79,13 @@ function buildFiveDayForcast(forcast) {
     return days
 }
 
-function buildTodaysHighlights(weatherData) {
+function buildTodaysHighlights(appState) {
+    const { todaysWeather: weatherData } = appState
+
+    console.log(weatherData)
     $('#humidity h2').text(`${weatherData.humidity}%`)
     // WIND
-    $('#wind h2').text(`${weatherData.wind_speed} mph`)
+    $('#wind h2').text(`${weatherData.wind_speed} ${appState.unit === 'imperial' ? 'mph' : 'kph'}`)
     $('#wind span').text(`${weatherData.wind_direction}°`)
     // UV 
     $('#uv-index h2').text(`${weatherData.uvIndex}`)
