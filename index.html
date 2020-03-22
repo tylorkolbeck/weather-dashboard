@@ -14,6 +14,8 @@
 <body>
     <div id="container">
         <div id="side-bar">
+            <h1 id="current-city"></h1>
+
             <div class="weather-today-lg">
                 <img id="current-weather-icon">
             </div>
@@ -25,14 +27,16 @@
 
             <h1 class="weather-deg-lg"></h1>
 
-
-
             <div class="spacer-lg"></div>
             <hr>
 
             <div class="search-wrapper m-y-lg">
-                <img class="icon-search" src="./assets/images/search.png">
-                <input placeholder="City...">
+                <form id="input-city-search">
+                    <button type="submit">
+                        <img class="icon-search" src="./assets/images/search.png">
+                    </button>
+                    <input placeholder="City...">
+                </form>
                 <img class="icon-location" src="./assets/images/location.png">
             </div>
 
@@ -60,8 +64,7 @@
                 <!-- HEADER CONTROLS -->
                 <div class="controls">
                     <div class="controls-nav">
-                        <h2 class="tab m-r-md">Today</h2>
-                        <h2 class="tab active">Week</h2>
+                        <!-- <h2 class="tab m-r-md">Today</h2> -->
                     </div>
                     <div class="controls-setting">
                         <div class="setting active m-r-md" data-unit="imperial">°F</div>
@@ -70,6 +73,8 @@
                 </div>
 
                 <!-- 5 DAY FORCAST WRAPPER -->
+                <h2>Forcast</h2>
+
                 <div class="five-day-wrapper">
                     <div class="lds-dual-ring"></div>
                 </div>
@@ -77,6 +82,7 @@
                 <!-- MORE WEATHER INFO SECTION -->
                 <div class="more-info">
                     <h2>Todays Highlights</h2>
+
                     <div class="more-info-cards">
                         <div id="humidity" class="card">
                             <p >Humidity</p>
@@ -100,7 +106,6 @@
                             <div class="card-content">
                                 <h2></h2>
                                 <div class="uv-scale m-t-md"></div>
-
                             </div>
                         </div>
                     </div>

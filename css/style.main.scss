@@ -34,6 +34,10 @@ hr {
     
 }
 
+#current-city {
+    font-weight: 300;
+}
+
 #container {
     display: flex;
     position: relative;
@@ -213,7 +217,7 @@ hr {
 
 .tab.active {
     color: $color-header-primary;
-    border-bottom: 2px solid $color-header-primary;
+    // border-bottom: 2px solid $color-header-primary;
 }
 
 
@@ -243,7 +247,7 @@ hr {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin: 40px auto;
+    margin: 20px auto;
 }
 
 .weather-card {
@@ -320,11 +324,21 @@ hr {
 
 .uv-scale {
     height: 20px;
-    width: 100%;
-    margin-right: 20px;
+    width: 40px;
     background: #eb4034;
     border-radius: 20px;
     display: inline-block;
+}
+
+// FORM STYLING 
+#input-city-search {
+    display: flex;
+    align-items: center;
+    & button {
+        background: none;
+        outline: none;
+        border: 0;
+    }
 }
 
 

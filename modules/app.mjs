@@ -33,7 +33,11 @@ let appState = {
 init()
 
 function init() {
+    // Listen for change in unit
     $('.controls-setting').on('click', () => unitClickedHandler(event, appState))
+    // listen for input submit of new city
+    $('#input-city-search').on('submit', formSubmitHandler)
+
     getData(appState)
 }
 
@@ -48,26 +52,28 @@ function setAppState(dataObj) {
 
 // This function will be triggered by input submit
 function getData(appState) {
-    console.log('GETTING WEATHER DATA')
     getWeatherData(appState)
     .then(res => {
         setAppState(res)
     })
-    .catch(err => console.log(err))
+    .catch(err => console.log(err)) // TODO: Handle error state
 }
 
 
-
-
 function buildUi(appState) {
-    $('.five-day-wrapper').empty()
+    clearUI()
+
+    $('#current-city').text(appState.todaysWeather.name)
 
     let fiveDayForcast = buildFiveDayForcast(appState.forcast)
     $('.five-day-wrapper').append(fiveDayForcast)
 
     buildTodaysHighlights(appState)
     buildSideWeatherUi(appState)
-    
+}
+
+function clearUI() {
+    $('.five-day-wrapper').empty()
 }
 
 function buildFiveDayForcast(forcast) {
@@ -82,13 +88,13 @@ function buildFiveDayForcast(forcast) {
 function buildTodaysHighlights(appState) {
     const { todaysWeather: weatherData } = appState
 
-    console.log(weatherData)
     $('#humidity h2').text(`${weatherData.humidity}%`)
     // WIND
     $('#wind h2').text(`${weatherData.wind_speed} ${appState.unit === 'imperial' ? 'mph' : 'kph'}`)
     $('#wind span').text(`${weatherData.wind_direction}°`)
     // UV 
     $('#uv-index h2').text(`${weatherData.uvIndex}`)
+    weatherData.uvIndex > 8 ? $('.uv-scale').css('background', '#c4292e') : $('.uv-scale').css('background', '#32a852')
     // FEELS LIKE
     $('#feels-like h2').text(`${weatherData.feelsLike}°`)
     // $('#feels-like .card-content span').text('3')
@@ -113,7 +119,6 @@ function unitClickedHandler(event, appState) {
         $(this).removeClass('active')
         if ($(this).attr('data-unit') === unit) {
             $(this).addClass('active')
-
         } 
     })
 
@@ -123,5 +128,17 @@ function unitClickedHandler(event, appState) {
     }
 
     getData(appState)
+}
+
+function formSubmitHandler(event) {
+    event.preventDefault()
+    let inputValue = $(event.target).children('input').val()
+
+    let newState = {
+        ...appState,
+        currentCity: inputValue
+    }
+
+    getData(newState)
 }
 

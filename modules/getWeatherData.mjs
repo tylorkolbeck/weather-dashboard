@@ -45,6 +45,7 @@ function setTodaysData(appState, todaysData) {
     newState.todaysWeather.uvIndex = todaysData.uvIndex
     newState.todaysDate = moment().format('dddd, h:mm a')
     newState.forcast = todaysData.forcast
+    newState.name = todaysData.name
 
     return newState
 }
