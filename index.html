@@ -29,8 +29,9 @@
 
             <div class="spacer-lg"></div>
             <hr>
+            
+            <div class="search-wrapper m-t-md m-b-md">
 
-            <div class="search-wrapper m-y-lg">
                 <form id="input-city-search">
                     <button type="submit">
                         <img class="icon-search" src="./assets/images/search.png">
@@ -39,23 +40,16 @@
                 </form>
                 <img class="icon-location" src="./assets/images/location.png">
             </div>
+            <p id="error-text"></p>
 
+            <!-- RECENT SEARCHES SECTION -->
+            <button id="clear-recent-searches-btn" class="m-t-md">Clear</button>
             <div class="recent-search-wrapper">
-                <div class="recent">
-                    <h2>San Diego, CA</h2>
-                    <p>70°F</p>
-                </div>
+                
+            </div>
 
-                <div class="recent">
-                    <h2>Jacksonville, FL</h2>
-                    <p>70°F</p>
-                </div>
-
-                <div class="recent">
-                    <h2>Seattle, WA</h2>
-                    <p>70°F</p>
-                </div>
-
+            <div id="scroll-indicator"> 
+                <div class="arrow-down"></div>
             </div>
 
         </div>

@@ -22,7 +22,9 @@ async function _doGetWeatherData(appState) {
 
         let forcast = await $.ajax({url: fiveDayQueryString, method: 'GET'})
 
-        return setTodaysData(appState, {...weather, uvIndex: uvIndex.value, forcast: filterDaysData(forcast)})
+        if (weather) { 
+            return setTodaysData(appState, {...weather, uvIndex: uvIndex.value, forcast: filterDaysData(forcast)})
+        } 
         // set loading to false
     }
 }

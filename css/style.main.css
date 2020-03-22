@@ -20,6 +20,10 @@ h1, h2, h3, h4 p {
   margin: 40px 0;
 }
 
+.m-b-md {
+  margin-bottom: 20px;
+}
+
 .m-y-md {
   margin: 20px 0px;
 }
@@ -132,6 +136,7 @@ hr {
 }
 #side-bar .recent-search-wrapper {
   display: flex;
+  max-height: 300px;
   flex-direction: column;
   overflow-y: scroll;
   background: none;
@@ -162,7 +167,6 @@ hr {
   right: 0;
   bottom: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.2);
   border-radius: 10px;
 }
 #side-bar .recent-search-wrapper .recent:nth-child(1) {
@@ -232,6 +236,10 @@ hr {
 
 .tab.active {
   color: #1d1d1d;
+}
+
+#error-text {
+  color: #c4292e;
 }
 
 .setting {
@@ -338,6 +346,39 @@ hr {
   background: none;
   outline: none;
   border: 0;
+}
+
+#scroll-indicator {
+  display: none;
+  justify-content: center;
+  margin: 10px auto;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.7);
+  width: 30px;
+  height: 30px;
+  border-radius: 20px;
+}
+
+.arrow-down {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid black;
+}
+
+#clear-recent-searches-btn {
+  padding: 6px 3px;
+  background: white;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  width: 60px;
+}
+#clear-recent-searches-btn:hover {
+  cursor: pointer;
+  background: black;
+  color: white;
 }
 
 /*# sourceMappingURL=style.main.css.map */

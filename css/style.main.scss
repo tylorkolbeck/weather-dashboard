@@ -101,6 +101,7 @@ hr {
 
     & .recent-search-wrapper {
         display: flex;
+        max-height: 300px;
         flex-direction: column;
         overflow-y: scroll;
         background: none;
@@ -134,7 +135,7 @@ hr {
             right: 0;
             bottom: 0;
             left: 0;
-            background: rgba(0,0,0, .2);
+            // background: rgba(0,0,0, .2);
             border-radius: 10px;
         }
 
@@ -217,7 +218,10 @@ hr {
 
 .tab.active {
     color: $color-header-primary;
-    // border-bottom: 2px solid $color-header-primary;
+}
+
+#error-text {
+    color: $color-red;
 }
 
 
@@ -338,6 +342,41 @@ hr {
         background: none;
         outline: none;
         border: 0;
+    }
+}
+
+#scroll-indicator {
+    display: none;
+    justify-content: center;
+    margin: 10px auto;
+    align-items: center;
+    background: rgba(white, .7);
+    width: 30px;
+    height: 30px;
+    border-radius: 20px;
+}
+
+.arrow-down {
+    width: 0; 
+    height: 0; 
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    
+    border-top: 10px solid black;
+  } 
+
+#clear-recent-searches-btn {
+    padding: 6px 3px;
+    background: white;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    width: 60px;
+
+    &:hover {
+        cursor: pointer;
+        background: black;
+        color: white;
     }
 }
 

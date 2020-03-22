@@ -1,5 +1,5 @@
 import { getWeatherData } from './getWeatherData.mjs'
-import onChange from './on-change.mjs'
+import { updateStateWithLocalStorage, updateLocalStorageWithSearches, clearLocalStorage } from './local-storage.mjs'
 
 import weatherCard from './weather-card.mjs'
 
@@ -14,6 +14,7 @@ let appState = {
     lat: null,
     lon: null,
     unit: 'imperial',
+    storedSearches: null,
 
     todaysWeather: {
         name: null,
@@ -37,8 +38,13 @@ function init() {
     $('.controls-setting').on('click', () => unitClickedHandler(event, appState))
     // listen for input submit of new city
     $('#input-city-search').on('submit', formSubmitHandler)
+    $('#clear-recent-searches-btn').on('click', handleClearRecentSearches)
 
+    // look for recent searches in localStorage
+    appState = updateStateWithLocalStorage(appState)
     getData(appState)
+    buildRecentSearchCard(appState)
+
 }
 
 
@@ -47,22 +53,38 @@ function setAppState(dataObj) {
         ...dataObj
     }
 
+    updateLocalStorageWithSearches(appState.storedSearches)
     buildUi(appState)
+    buildRecentSearchCard(appState)
 }
 
 // This function will be triggered by input submit
 function getData(appState) {
     getWeatherData(appState)
-    .then(res => {
-        setAppState(res)
-    })
-    .catch(err => console.log(err)) // TODO: Handle error state
+        .then(res => {
+            $('#error-text').text('')
+            setAppState({
+                ...res,
+                storedSearches: {
+                    ...appState.storedSearches,
+                    [res.todaysWeather.name]: {
+                        temp: res.todaysWeather.temp
+                    }
+                }
+            })
+        })
+        .catch(err => {
+            $('#error-text').text('City Not Found')
+        })
 }
 
 
 function buildUi(appState) {
     clearUI()
+    if (appState.storedSearches) {
+        $('#clear-recent-searches-btn').css('display', 'block')
 
+    }
     $('#current-city').text(appState.todaysWeather.name)
 
     let fiveDayForcast = buildFiveDayForcast(appState.forcast)
@@ -115,11 +137,11 @@ function buildSideWeatherUi(appState) {
 function unitClickedHandler(event, appState) {
     let unit = $(event.target).attr('data-unit')
 
-    $('.setting').each(function() {
+    $('.setting').each(function () {
         $(this).removeClass('active')
         if ($(this).attr('data-unit') === unit) {
             $(this).addClass('active')
-        } 
+        }
     })
 
     appState = {
@@ -133,6 +155,7 @@ function unitClickedHandler(event, appState) {
 function formSubmitHandler(event) {
     event.preventDefault()
     let inputValue = $(event.target).children('input').val()
+    $(event.target).children('input').val('')
 
     let newState = {
         ...appState,
@@ -142,3 +165,49 @@ function formSubmitHandler(event) {
     getData(newState)
 }
 
+
+function buildRecentSearchCard(appState) {
+    let stored = { ...appState.storedSearches }
+
+    let searchWrapper = $('.recent-search-wrapper')
+
+    searchWrapper.empty()
+
+    // let searchCount = 0
+
+
+    for (let key in stored) {
+        let divEl = $('<div>').addClass('recent')
+        divEl.attr('data-city', key)
+        let nameEl = $('<h2>').text(key)
+        let tempEl = $('<p>').text(`${stored[key].temp}°`)
+        divEl.append(nameEl, tempEl)
+        $(divEl).on('click', searchHistoryCardClickedHandler)
+        searchWrapper.prepend(divEl)
+    }
+
+    // If stored searches length greater than 3 then show scroll indicator
+    if (Object.keys(stored).length > 2) {
+        $('#scroll-indicator').css('display', 'flex')
+    }
+}
+
+function searchHistoryCardClickedHandler(event) {
+    let city = $(event.target).attr('data-city')
+
+    let newState = {
+        ...appState,
+        currentCity: city
+    }
+
+    getData(newState)
+}
+
+function handleClearRecentSearches(event) {
+    let stateClone = {...appState}
+    stateClone.storedSearches = null
+    clearLocalStorage()
+    $('#clear-recent-searches-btn').css('display', 'none')
+
+    setAppState(stateClone)
+}
