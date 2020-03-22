@@ -36,7 +36,7 @@ function setAppState(dataObj) {
 }
 
 // This function will be triggered by input submit
-getWeatherData(appState, 'San Diego')
+getWeatherData(appState, 'San Diego', 'imperial')
     .then(res => {
         setAppState(res)
     })
@@ -48,6 +48,7 @@ function buildUi(appState) {
     $('.five-day-wrapper').append(fiveDayForcast)
 
     buildTodaysHighlights(appState.todaysWeather)
+    buildSideWeatherUi(appState)
     
 }
 
@@ -75,5 +76,12 @@ function buildTodaysHighlights(weatherData) {
     $('#pressure h2').text(`${weatherData.pressure} hPa`)
     // CLOUDS
     $('#clouds h2').text(`${weatherData.clouds}%`)
+}
+
+function buildSideWeatherUi(appState) {
+    $('#current-weather-icon').attr('src', `http://openweathermap.org/img/wn/${appState.todaysWeather.icon}@2x.png`)
+    $('.date-wrapper h2').text(moment().format('dddd'))
+    $('.date-wrapper h3').text(moment().format('HH:mm a'))
+    $('.weather-deg-lg').text(`${appState.todaysWeather.temp}°`)
 }
 

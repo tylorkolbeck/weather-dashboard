@@ -167,6 +167,7 @@ hr {
 #weather-wrapper {
     display: flex;
     flex-direction: column;
+    max-width: 1200px;
     z-index: 1;
     flex-grow: 1;
     border-radius: $container-border-radius;
@@ -240,6 +241,7 @@ hr {
 .five-day-wrapper {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     margin: 40px auto;
 }
 
