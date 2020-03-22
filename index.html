@@ -3,11 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- GOOLE FONT -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.main.css">
     <title>Weather Dashboard</title>
 </head>
 <body>
-    <h1>Weather dashboard</h1>
+    <div id="container">
+        <div id="side-bar"></div>
+        <div id="weather-wrapper">
+            <div id="weather-header">
+                <!-- HEADER CONTROLS -->
+                <div class="controls">
+                    <div class="controls-nav">
+                        <h2 class="tab active">Today</h2>
+                        <h2 class="tab">Week</h2>
+                    </div>
+                    <div class="controls-setting">
+                        <div class="setting active m-r-md">F</div>
+                        <div class="setting">C</div>
+                    </div>
+                </div>
+
+                <!-- 5 DAY FORCAST -->
+                <div class="five-day-wrapper">
+
+                </div>
+            </div>
+        </div>
+
+    </div>
     <script src="./modules/app.mjs"></script>
 </body>
 </html>
