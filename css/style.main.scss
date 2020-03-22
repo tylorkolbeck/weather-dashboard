@@ -11,11 +11,18 @@
 }
 
 body {
-
     position: relative;
     display: block;
     height: 100%;
     width: 100%;
+}
+
+input {
+    padding: 8px;
+    outline: none;
+    border: none;
+    font-size: 16px;
+    border-radius: 10px;
 }
 
 #container {
@@ -43,13 +50,32 @@ body {
     background-color: rgba(0,0,0, .6);
 }
 
+// SIDE BAR SECTION
 #side-bar {
+    padding: 40px 20px;
     display: flex;
     flex-direction: column;
     z-index: 1;
-    width: 200px;
     background: $color-section-background;
     border-radius: $container-border-radius;
+
+
+}
+
+.search-wrapper {
+    display: flex;
+    align-items: center;
+    & .icon-search {
+        margin-right: 10px;
+        height: 25px;
+        width: 25px;
+    }
+
+    & .icon-location {
+        height: 25px;
+        width: 25px;
+        margin-left: 20px;
+    }
 }
 
 #weather-wrapper {
@@ -65,7 +91,7 @@ body {
 // HEADER SECTION CONTAINING CONTROLS
 #weather-header {
     border-radius: $container-border-radius $container-border-radius 0 0;
-    padding: 40px;
+    padding: 40px 40px;
 }
 
 .controls {
@@ -74,9 +100,10 @@ body {
     & div {
         display: flex;
     }
-    & h2 {
-        margin: 0 20px;
-    }
+}
+
+.inactive {
+    color: $color-header-inactive;
 }
 
 .controls-nav {
@@ -124,5 +151,45 @@ body {
 
 // FIVE DAY FORCAST SECTION
 .five-day-wrapper {
+    display: flex;
+    margin: 40px auto;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 10px;
+    border-radius: $container-border-radius;
+    display: block;
+    background: #eee;
+    flex: 1 1 0px;
+    margin: 0 20px;
+
+    & img {
+        margin: 10px auto;
+        height: 50px;
+    }
+
+    & p {
+        text-align: center;
+    }
+}
+
+.card-content {
+    margin: 40px auto;
+}
+
+.temp-dif {
+    color: $color-header-inactive;
+    font-size: 14px;
+    margin-left: 6px;
+}
+
+
+// MORE WEATHER INFO SECTION
+.more-info-cards {
+    padding: 20px 0px;
+    display: flex;
 
 }

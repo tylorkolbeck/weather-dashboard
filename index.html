@@ -10,13 +10,20 @@
 </head>
 <body>
     <div id="container">
-        <div id="side-bar"></div>
+        <div id="side-bar">
+            <div class="search-wrapper">
+                <img class="icon-search" src="./assets/images/search.png">
+                <input placeholder="City...">
+                <img class="icon-location" src="./assets/images/location.png">
+            </div>
+
+        </div>
         <div id="weather-wrapper">
             <div id="weather-header">
                 <!-- HEADER CONTROLS -->
                 <div class="controls">
                     <div class="controls-nav">
-                        <h2 class="tab active">Today</h2>
+                        <h2 class="tab active m-r-md">Today</h2>
                         <h2 class="tab">Week</h2>
                     </div>
                     <div class="controls-setting">
@@ -27,6 +34,71 @@
 
                 <!-- 5 DAY FORCAST -->
                 <div class="five-day-wrapper">
+                    <div class="card">
+                        <p>Sun</p>
+                        <img src="./assets/images/sunny.png">
+                        <h4>70°<span class="temp-dif">-5°</span></h4>
+                    </div>
+                    <div class="card">
+                        <p>Mon</p>
+                        <img src="./assets/images/sunny.png">
+                        <h4>70°<span class="temp-dif">-5°</span></h4>
+                    </div>
+                    <div class="card">
+                        <p>Tues</p>
+                        <img src="./assets/images/sunny.png">
+                        <h4>70°<span class="temp-dif">-5°</span></h4>
+                    </div>
+                    <div class="card">
+                        <p>Wed</p>
+                        <img src="./assets/images/sunny.png">
+                        <h4>70°<span class="temp-dif">-5°</span></h4>
+                    </div>
+                    <div class="card">
+                        <p>Thurs</p>
+                        <img src="./assets/images/sunny.png">
+                        <h4>70°<span class="temp-dif">-5°</span></h4>
+                    </div>
+                </div>
+
+                <!-- MORE WEATHER INFO SECTION -->
+                <div class="more-info">
+                    <h2>Todays Highlights</h2>
+                    <div class="more-info-cards">
+                        <div class="card">
+                            <p>Humidity</p>
+                            <div class="card-content">
+                                <h2>90</h2>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <p>Wind</p>
+                            <div class="card-content">
+                                <h2>13 MPH</h2>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <p>UV Index</p>
+                            <div class="card-content">
+                                <h2>10.16</h2>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="more-info-cards">
+                        <div class="card">
+                            <p>Feels Like</p>
+                            <div class="card-content">
+                                <h2>90°<span class="temp-dif">-5°</span></h2>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <p>Pressure</p>
+                            <div class="card-content">
+                                <h2>1024 hPa</h2>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
             </div>
