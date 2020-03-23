@@ -1,9 +1,7 @@
 import { getWeatherData } from './getWeatherData.mjs'
 import { updateStateWithLocalStorage, updateLocalStorageWithSearches, clearLocalStorage } from './local-storage.mjs'
-
 import weatherCard from './weather-card.mjs'
 
-// let currentCity = 'San Diego'
 
 let appState = {
     currentCity: 'San Diego',
@@ -94,9 +92,11 @@ function buildUi(appState) {
     buildSideWeatherUi(appState)
 }
 
+
 function clearUI() {
     $('.five-day-wrapper').empty()
 }
+
 
 function buildFiveDayForcast(forcast) {
     let days = []
@@ -173,9 +173,6 @@ function buildRecentSearchCard(appState) {
 
     searchWrapper.empty()
 
-    // let searchCount = 0
-
-
     for (let key in stored) {
         let divEl = $('<div>').addClass('recent')
         divEl.attr('data-city', key)
@@ -208,6 +205,8 @@ function handleClearRecentSearches(event) {
     stateClone.storedSearches = null
     clearLocalStorage()
     $('#clear-recent-searches-btn').css('display', 'none')
+    $('#scroll-indicator').css('display', 'none')
+
 
     setAppState(stateClone)
 }
