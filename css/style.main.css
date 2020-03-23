@@ -1,4 +1,4 @@
-@import './loading-spinner.css';
+@import "./loading-spinner.css";
 body {
   font-family: "Roboto", sans-serif;
 }
@@ -138,8 +138,14 @@ hr {
   display: flex;
   max-height: 300px;
   flex-direction: column;
-  overflow-y: scroll;
-  background: none;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+#side-bar .recent-search-wrapper::-webkit-scrollbar {
+  display: none;
+}
+#side-bar .recent-search-wrapper {
+  -ms-overflow-style: none;
 }
 #side-bar .recent-search-wrapper .recent {
   position: relative;
@@ -177,6 +183,19 @@ hr {
 }
 #side-bar .recent-search-wrapper .recent:nth-child(3) {
   background-image: url("../assets/images/scape-3.jpg");
+}
+#side-bar #clear-recent-searches-btn {
+  padding: 6px 3px;
+  background: white;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  width: 60px;
+}
+#side-bar #clear-recent-searches-btn:hover {
+  cursor: pointer;
+  background: black;
+  color: white;
 }
 
 .search-wrapper {
@@ -365,20 +384,6 @@ hr {
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
   border-top: 10px solid black;
-}
-
-#clear-recent-searches-btn {
-  padding: 6px 3px;
-  background: white;
-  outline: none;
-  border: none;
-  border-radius: 10px;
-  width: 60px;
-}
-#clear-recent-searches-btn:hover {
-  cursor: pointer;
-  background: black;
-  color: white;
 }
 
 /*# sourceMappingURL=style.main.css.map */
