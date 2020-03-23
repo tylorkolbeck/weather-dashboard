@@ -83,8 +83,8 @@ function buildUi(appState) {
     clearUI()
     if (appState.storedSearches) {
         $('#clear-recent-searches-btn').css('display', 'block')
-
     }
+
     $('#current-city').text(appState.todaysWeather.name)
 
     let fiveDayForcast = buildFiveDayForcast(appState.forcast)
