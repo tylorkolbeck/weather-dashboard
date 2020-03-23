@@ -14,6 +14,9 @@ A weather dashboard that allows you to search for cities and store your searches
 * SASS
 * jQuery
 * Open Weather API
+    * UV Index API
+    * 5 Day Forcast API
+    * Current Weather API
 
 
 
