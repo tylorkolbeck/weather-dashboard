@@ -6,7 +6,7 @@
 
 A weather dashboard that allows you to search for cities and store your searches for future visits. The dashboard gives you detailed data for the current day as well as a 5 day forcast.
 
-![App ScreenShot](/assets/images/weather-dasboard-demo.png)
+![App ScreenShot](./assets/images/weather-dasboard-demo.png)
 
 ### Technologies Used
 
